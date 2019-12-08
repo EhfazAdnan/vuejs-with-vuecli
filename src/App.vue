@@ -4,6 +4,17 @@
     <HelloWorld msg="Hello to all coders"/>
 
     <tasks/>
+
+    <!-- <p :class="{ 'red-error': error, 'yellow-warning': warning }">123</p> another way -->
+    <p :class="classObject">{{ value }}</p>
+    <p :style="{ fontSize:(value*10) + 'px' }">{{ value }}</p>
+    
+    <button type="button" @click="value++">+</button>
+    <button type="button" @click="value--">-</button>
+
+    <button type="button" @click="error = ! error">Error</button>
+    <button type="button" @click="warning = ! warning">Warning</button>
+
   </div>
 </template>
 
@@ -16,7 +27,24 @@ export default {
   components: {
     HelloWorld,
     Tasks
+  },
+  data: function(){
+    return {
+      value: 1,
+      error: false,
+      warning: false
+    }
+  },
+
+  computed: {
+    classObject: function(){
+      return {
+        'red-error': this.value > 5, 
+        'yellow-warning': this.value < 0
+      }
+    }
   }
+
 }
 </script>
 
@@ -28,5 +56,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.red-error{
+  background-color: darkred;
+}
+.yellow-warning{
+  text-decoration: underline;
 }
 </style>
