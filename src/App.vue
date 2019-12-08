@@ -1,32 +1,24 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Hello to all coders"/>
 
-    <tasks/>
+    <ul>
+      <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/tasks">Tasks</router-link></li>
+      <li><router-link to="/user/123">User</router-link></li>
+    </ul>
 
-    <!-- <p :class="{ 'red-error': error, 'yellow-warning': warning }">123</p> another way -->
-    <p :class="classObject">{{ value }}</p>
-    <p :style="{ fontSize:(value*10) + 'px' }">{{ value }}</p>
-    
-    <button type="button" @click="value++">+</button>
-    <button type="button" @click="value--">-</button>
-
-    <button type="button" @click="error = ! error">Error</button>
-    <button type="button" @click="warning = ! warning">Warning</button>
+    <router-view></router-view>
 
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import Tasks from './components/Tasks.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld,
-    Tasks
+    
   },
   data: function(){
     return {
